@@ -15,10 +15,18 @@
 #   about_triangle_project.py
 # and
 #   about_triangle_project_2.py
-#
+
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+    if a <= 0 or b <= 0 or c <= 0:
+     raise TriangleError(AttributeError('all sides must be greater than 0'))
+    if a + b + c <= 2 * max(a, b, c):
+     raise TriangleError(AttributeError('the largest side cannot be larger than the sum of the two smaller sides'))
+    
+    if len(set([a, b, c])) == 1:
+        return 'equilateral'
+    elif len(set([a, b, c])) == 2:
+        return 'isosceles'
+    return 'scalene'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
